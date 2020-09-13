@@ -1,12 +1,14 @@
 package com.nav;
 
+import java.util.Arrays;
+
 public class StringAddition {
 
 	public static final String DEFAULT_SPLITTER = ",\n";
 	public static final String OPEN_BRACKET = "[";
 	public static final String CLOSE_BRACKET = "]";
 	
-	public int Add(String numbers) {
+	public int Add(String numbers) throws NegativesNotAllowedException{
 		//Condition to handle empty input String. 
 		if(numbers.equalsIgnoreCase(""))
 			return 0;
@@ -29,16 +31,26 @@ public class StringAddition {
 			splitter.append(customDelimiter);
 		
 		splitter.append(CLOSE_BRACKET);
-		String[] numbersToAdd = numbers.split(splitter.toString());
+		int[] numbersToAdd = Arrays.asList(numbers.split(splitter.toString())).stream().mapToInt(Integer::parseInt).toArray();
 		
 		//Condition to handle String with only one number.
 		if(numbersToAdd.length < 2)
-			return Integer.parseInt(numbersToAdd[0]);
+			if(numbersToAdd[0] > 0)
+				return numbersToAdd[0];
+			else
+				throw new NegativesNotAllowedException("Negatives not allowed. Found " + numbersToAdd[0]);
 		else {
 			int sum = 0;
-			for(String number : numbersToAdd) {
-				sum += Integer.parseInt(number);
+			StringBuffer negativeNumbers = new StringBuffer();
+			for(int number : numbersToAdd) {
+				if(number < 0)
+					negativeNumbers.append(" "+number);
+				else
+					sum += number;
 			}
+			if(negativeNumbers.length() > 0)
+				throw new NegativesNotAllowedException("Negatives not allowed. Found" + negativeNumbers);
+				
 			return sum;
 		}
 			
