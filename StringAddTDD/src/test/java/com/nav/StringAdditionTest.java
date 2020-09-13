@@ -25,8 +25,14 @@ class StringAdditionTest {
 	}
 	
 	@Test
-	void testAddStringContainingNewLine() {
+	void testAddContainingNewLine() {
 		StringAddition calculate = new StringAddition();
 		assertEquals(10, calculate.Add("1,2\n3,4"), "Add() must return the sum of two numbers passed as input in the String");
+	}
+	
+	@Test
+	void testAddContainingCustomDelimiter() {
+		StringAddition calculate = new StringAddition();
+		assertEquals(10, calculate.Add("//;1,2\n3;4"), "Add() must return the sum of two numbers passed as input in the String");
 	}
 }
