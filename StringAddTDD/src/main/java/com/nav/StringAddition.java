@@ -7,7 +7,7 @@ public class StringAddition {
 		if(numbers.equalsIgnoreCase(""))
 			return 0;
 
-		String[] numbersToAdd = numbers.split(",");
+		String[] numbersToAdd = numbers.split("[,\n]");
 		
 		//Condition to handle String with only one number.
 		if(numbersToAdd.length < 2)
