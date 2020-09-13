@@ -21,6 +21,6 @@ class StringAdditionTest {
 	@Test
 	void testAddStringWithMultipleNumber() {
 		StringAddition calculate = new StringAddition();
-		assertEquals(3, calculate.Add("1,2"), "Add() must return the sum of two numbers passed as input in the String");
+		assertEquals(10, calculate.Add("1,2,3,4"), "Add() must return the sum of two numbers passed as input in the String");
 	}
 }

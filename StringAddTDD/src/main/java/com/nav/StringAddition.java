@@ -12,8 +12,14 @@ public class StringAddition {
 		//Condition to handle String with only one number.
 		if(numbersToAdd.length < 2)
 			return Integer.parseInt(numbersToAdd[0]);
-		else
-			return Integer.parseInt(numbersToAdd[0]) + Integer.parseInt(numbersToAdd[1]);
+		else {
+			int sum = 0;
+			for(String number : numbersToAdd) {
+				sum += Integer.parseInt(number);
+			}
+			return sum;
+		}
+			
 			
 	}
 }
