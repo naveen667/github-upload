@@ -41,4 +41,10 @@ class StringAdditionTest {
 		StringAddition calculate = new StringAddition();
 		assertThrows(NegativesNotAllowedException.class, () -> calculate.Add("//;\n1,-2\n3;-4"), "Should throw negatives not allowed if any negative number is present in the string");
 	}
+	
+	@Test
+	void testAddNumberAboveThousand() throws NegativesNotAllowedException {
+		StringAddition calculate = new StringAddition();
+		assertEquals(6, calculate.Add("//;\n1,2\n3;1001"), "Add() must return the sum of two numbers passed as input in the String");
+	}
 }

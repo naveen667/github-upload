@@ -18,7 +18,7 @@ public class StringAddition {
 		//Condition to find custom delimiter and refactoring the string for splitting.
 		if(numbers.startsWith("//")) {
 			customDelimiter = numbers.substring(2, 3);
-			numbers = numbers.replaceFirst("//"+customDelimiter, "");
+			numbers = numbers.replaceFirst("//" + customDelimiter +"\n", "");
 			customDelimiterPresent = true;
 		}
 		
@@ -45,7 +45,9 @@ public class StringAddition {
 			for(int number : numbersToAdd) {
 				if(number < 0)
 					negativeNumbers.append(" "+number);
-				else
+				else if (number > 1000)						//Condition to skip numbers greater than 1000
+					continue;
+				else	
 					sum += number;
 			}
 			if(negativeNumbers.length() > 0)
